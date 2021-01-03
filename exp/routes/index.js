@@ -7,18 +7,19 @@ const movies = db.get('movies')
 
 /* GET home page. */
 router.get('/:slug', async function(req, res, next) {
-  const movieName = req.params.slug 
-  movies.insert({ name: movieName, 'score': 8.5})
+  const movieName = req.params.slug;
   const movie = await movies.find({ name: movieName });
-  console.log(movie);
-  res.json({'movie':movie})
+  res.json({'movie':movie});
   });
 
-//  router.get('/', async function(req, res, next) {
-//   pezos.insert({ name: 'yigit'})
-//   const user = await pezos.find({ name: 'yigit' });
-//   console.log(user);
-//   res.json({'user':user})
-//  });
+
+router.post('/:slug', async function(req, res, next) {
+  const request_info = req.body;
+  console.log(request_info);
+  const result = await movies.insert({ name: request_info.name , score:request_info.score })
+  res.json({'result':result})
+ });
+
+
 
 module.exports = router;
