@@ -6,9 +6,11 @@ var router = express.Router();
 const movies = db.get('movies') 
 
 /* GET home page. */
-router.get('/:slug', async function(req, res, next) {
+router.get('/:slug?', async function(req, res, next) {
   const movieName = req.params.slug;
-  const movie = await movies.find({ name: movieName });
+  console.log(req.query);
+  const movieScore = req.query.score;
+  const movie = await movies.find({ name: movieName,score:movieScore });
   res.json({'movie':movie});
   });
 
