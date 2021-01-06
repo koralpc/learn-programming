@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          götoş koralp yiğit
+          götoş koralp 
         </a>
       </header>
     </div>
